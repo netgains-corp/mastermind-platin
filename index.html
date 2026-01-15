@@ -105,23 +105,45 @@
     <!-- MAIN CONTAINER CARD -->
     <main class="w-full max-w-7xl bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl overflow-hidden shadow-2xl grid lg:grid-cols-2 relative">
         
-        <!-- LEFT: PRODUCT IMAGE -->
-        <div class="relative h-64 lg:h-auto bg-slate-950 overflow-hidden group">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60 z-10 lg:opacity-30"></div>
-            <!-- Das Bild füllt den linken Bereich komplett aus -->
-            <img src="mastermind.webp" alt="Mastermind Platin Paket" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
+        <!-- LEFT (Desktop): PRODUCT IMAGES (SPLIT) -->
+        <!-- Order-1 on Desktop puts it on the Left -->
+        <!-- Added Padding (p-8) for the frame effect and gap for separation -->
+        <div class="relative h-auto bg-slate-950 flex flex-col p-6 lg:p-8 gap-6 lg:order-1 justify-center border-r border-slate-800">
             
-            <!-- Mobile Title Overlay (nur sichtbar auf Mobile, wenn Bild oben ist) -->
-            <div class="absolute bottom-4 left-4 z-20 lg:hidden">
-                <span class="text-xs font-bold text-blue-400 uppercase tracking-widest bg-slate-900/80 px-2 py-1 rounded">Exklusiv</span>
+            <!-- Top Half: Mastermind Platin -->
+            <!-- Rounded corners and shadow to separate image from frame -->
+            <div class="relative overflow-hidden group rounded-2xl shadow-2xl border border-slate-800/50 aspect-video lg:aspect-auto lg:h-64">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-30 z-10 transition-opacity group-hover:opacity-10"></div>
+                <img src="mastermind.webp" alt="Mastermind Platin Paket" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
+                
+                <!-- Label Overlay -->
+                <div class="absolute top-3 right-3 z-20">
+                    <span class="text-[9px] font-bold text-slate-900 bg-platinum-200/95 px-2 py-1 rounded-md uppercase tracking-widest shadow-lg backdrop-blur-sm">Paket 3</span>
+                </div>
             </div>
+
+            <!-- Bottom Half: Flo Seminar -->
+            <div class="relative overflow-hidden group rounded-2xl shadow-2xl border border-slate-800/50 aspect-video lg:aspect-auto lg:h-64">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-50 z-10 transition-opacity group-hover:opacity-30"></div>
+                <img src="flo_seminar.webp" alt="Florian Merzenich Seminar" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
+                
+                <!-- Label Overlay -->
+                <div class="absolute bottom-3 left-3 z-20">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                        <p class="text-[10px] font-bold text-white uppercase tracking-widest drop-shadow-md">Live Experience</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- RIGHT: VALUE STACK & CHECKOUT -->
-        <div class="p-6 md:p-10 lg:p-14 flex flex-col justify-center max-h-[90vh] lg:max-h-screen overflow-y-auto custom-scroll">
+        <!-- RIGHT (Desktop): VALUE STACK & CHECKOUT -->
+        <!-- Order-2 on Desktop puts it on the Right -->
+        <div class="p-6 md:p-10 lg:p-14 flex flex-col justify-center max-h-[90vh] lg:max-h-screen overflow-y-auto custom-scroll lg:order-2">
             
             <div class="mb-2 hidden lg:block">
-                <span class="text-xs font-bold text-blue-400 uppercase tracking-widest border border-blue-900/50 bg-blue-900/10 px-3 py-1 rounded-full">Paket 3 • Exklusiv</span>
+                <span class="text-xs font-bold text-blue-400 uppercase tracking-widest border border-blue-900/50 bg-blue-900/10 px-3 py-1 rounded-full">Exklusiver Zugang</span>
             </div>
 
             <h1 class="text-3xl md:text-4xl font-black text-white mb-2">Mastermind <span class="platinum-text">PLATIN</span></h1>
