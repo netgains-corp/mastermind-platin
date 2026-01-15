@@ -103,15 +103,13 @@
     <div class="bg-blob-2"></div>
 
     <!-- MAIN CONTAINER CARD -->
-    <main class="w-full max-w-7xl bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl overflow-hidden shadow-2xl grid lg:grid-cols-2 relative">
+    <main class="w-full max-w-6xl bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl overflow-hidden shadow-2xl grid lg:grid-cols-2 relative my-auto">
         
         <!-- LEFT (Desktop): PRODUCT IMAGES (SPLIT) -->
-        <!-- Order-1 on Desktop puts it on the Left -->
-        <!-- Added Padding (p-8) for the frame effect and gap for separation -->
         <div class="relative h-auto bg-slate-950 flex flex-col p-6 lg:p-8 gap-6 lg:order-1 justify-center border-r border-slate-800">
             
             <!-- Top Half: Mastermind Platin -->
-            <!-- Rounded corners and shadow to separate image from frame -->
+            <!-- Height Increased to h-60/64 for better visibility -->
             <div class="relative overflow-hidden group rounded-2xl shadow-2xl border border-slate-800/50 aspect-video lg:aspect-auto lg:h-64">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-30 z-10 transition-opacity group-hover:opacity-10"></div>
                 <img src="mastermind.webp" alt="Mastermind Platin Paket" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
@@ -123,6 +121,7 @@
             </div>
 
             <!-- Bottom Half: Flo Seminar -->
+            <!-- Height Increased -->
             <div class="relative overflow-hidden group rounded-2xl shadow-2xl border border-slate-800/50 aspect-video lg:aspect-auto lg:h-64">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-50 z-10 transition-opacity group-hover:opacity-30"></div>
                 <img src="flo_seminar.webp" alt="Florian Merzenich Seminar" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
@@ -139,114 +138,113 @@
         </div>
 
         <!-- RIGHT (Desktop): VALUE STACK & CHECKOUT -->
-        <!-- Order-2 on Desktop puts it on the Right -->
-        <div class="p-6 md:p-10 lg:p-14 flex flex-col justify-center max-h-[90vh] lg:max-h-screen overflow-y-auto custom-scroll lg:order-2">
+        <!-- Entfernt: justify-center (Verhindert Abschneiden oben) -->
+        <div class="p-6 md:p-8 lg:p-10 flex flex-col max-h-[90vh] lg:max-h-[85vh] overflow-y-auto custom-scroll lg:order-2">
             
-            <div class="mb-2 hidden lg:block">
-                <span class="text-xs font-bold text-blue-400 uppercase tracking-widest border border-blue-900/50 bg-blue-900/10 px-3 py-1 rounded-full">Exklusiver Zugang</span>
+            <div class="mb-3 hidden lg:block pt-2">
+                <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest border border-blue-900/50 bg-blue-900/10 px-2 py-1 rounded-full">Exklusiver Zugang</span>
             </div>
 
-            <h1 class="text-3xl md:text-4xl font-black text-white mb-2">Mastermind <span class="platinum-text">PLATIN</span></h1>
-            <p class="text-slate-400 text-sm mb-8 font-medium">Zielgruppe: High Performer, Unternehmer & HNWIs</p>
+            <h1 class="text-2xl md:text-3xl font-black text-white mb-2">Mastermind <span class="platinum-text">PLATIN</span></h1>
+            <p class="text-slate-400 text-xs mb-6 font-medium">Zielgruppe: High Performer, Unternehmer & HNWIs</p>
 
             <!-- THE STACK -->
-            <div class="space-y-5 mb-10">
+            <div class="space-y-4 mb-8">
                 
                 <!-- Item 1 -->
-                <div class="flex gap-4 items-start">
-                    <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700/50 shrink-0">
-                        <i data-lucide="crosshair" class="w-5 h-5 text-platinum-300"></i>
+                <div class="flex gap-3 items-start">
+                    <div class="bg-slate-800/50 p-1.5 rounded-lg border border-slate-700/50 shrink-0">
+                        <i data-lucide="crosshair" class="w-4 h-4 text-platinum-300"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-white text-base">Private Strategie-Session (1:1)</h3>
-                        <p class="text-xs text-slate-400 mt-1">2h Deep Dive: Vermögensanalyse & Freiheits-Masterplan.</p>
+                        <h3 class="font-bold text-white text-sm">Private Strategie-Session (1:1)</h3>
+                        <p class="text-[10px] text-slate-400 leading-tight mt-0.5">2h Deep Dive: Vermögensanalyse & Freiheits-Masterplan.</p>
                     </div>
                 </div>
 
                 <!-- Item 2 -->
-                <div class="flex gap-4 items-start">
-                    <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700/50 shrink-0">
-                        <i data-lucide="trending-up" class="w-5 h-5 text-platinum-300"></i>
+                <div class="flex gap-3 items-start">
+                    <div class="bg-slate-800/50 p-1.5 rounded-lg border border-slate-700/50 shrink-0">
+                        <i data-lucide="trending-up" class="w-4 h-4 text-platinum-300"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-white text-base">Maßgeschneiderte High-Level-Strategie</h3>
-                        <p class="text-xs text-slate-400 mt-1">Bitcoin als Speicher, Altcoins als Hebel, Profi-Risikosteuerung.</p>
+                        <h3 class="font-bold text-white text-sm">Maßgeschneiderte High-Level-Strategie</h3>
+                        <p class="text-[10px] text-slate-400 leading-tight mt-0.5">Bitcoin als Speicher, Altcoins als Hebel, Profi-Risikosteuerung.</p>
                     </div>
                 </div>
 
                 <!-- Item 3 (Highlight) -->
-                <div class="flex gap-4 items-start bg-blue-900/10 p-3 -mx-3 rounded-xl border border-blue-500/20">
-                    <div class="bg-blue-500/20 p-2 rounded-lg border border-blue-500/30 shrink-0">
-                        <i data-lucide="message-circle" class="w-5 h-5 text-blue-300"></i>
+                <div class="flex gap-3 items-start bg-blue-900/10 p-2 -mx-2 rounded-lg border border-blue-500/20">
+                    <div class="bg-blue-500/20 p-1.5 rounded-lg border border-blue-500/30 shrink-0">
+                        <i data-lucide="message-circle" class="w-4 h-4 text-blue-300"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-blue-100 text-base flex items-center gap-2">
+                        <h3 class="font-bold text-blue-100 text-sm flex items-center gap-2">
                             Direkter Draht zu mir
-                            <span class="text-[9px] bg-blue-600 text-white px-1.5 py-0.5 rounded uppercase tracking-wider">Priority</span>
+                            <span class="text-[8px] bg-blue-600 text-white px-1 py-0.5 rounded uppercase tracking-wider">Priority</span>
                         </h3>
-                        <p class="text-xs text-blue-200/70 mt-1">Persönlicher Chat & Sprachnachrichten. Nähe & Vertrauen.</p>
+                        <p class="text-[10px] text-blue-200/70 leading-tight mt-0.5">Persönlicher Chat & Sprachnachrichten. Nähe & Vertrauen.</p>
                     </div>
                 </div>
 
                 <!-- Item 4 -->
-                <div class="flex gap-4 items-start">
-                    <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700/50 shrink-0">
-                        <i data-lucide="users" class="w-5 h-5 text-platinum-300"></i>
+                <div class="flex gap-3 items-start">
+                    <div class="bg-slate-800/50 p-1.5 rounded-lg border border-slate-700/50 shrink-0">
+                        <i data-lucide="users" class="w-4 h-4 text-platinum-300"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-white text-base">Private Mastermind Calls</h3>
-                        <p class="text-xs text-slate-400 mt-1">Unternehmer-Mindset. Kapital & Psychologie. Kein Anfänger-Talk.</p>
+                        <h3 class="font-bold text-white text-sm">Private Mastermind Calls</h3>
+                        <p class="text-[10px] text-slate-400 leading-tight mt-0.5">Unternehmer-Mindset. Kapital & Psychologie. Kein Anfänger-Talk.</p>
                     </div>
                 </div>
 
-                <!-- Item 5 & 6 Compacted -->
-                <div class="flex gap-4 items-start">
-                    <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700/50 shrink-0">
-                        <i data-lucide="shield-check" class="w-5 h-5 text-platinum-300"></i>
+                <!-- Item 5 & 6 -->
+                <div class="flex gap-3 items-start">
+                    <div class="bg-slate-800/50 p-1.5 rounded-lg border border-slate-700/50 shrink-0">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-platinum-300"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-white text-base">6 Monate Begleitung & Pre-Insights</h3>
-                        <p class="text-xs text-slate-400 mt-1">Trends vor der Masse. Regelmäßige Check-ins für mentale Stabilität.</p>
+                        <h3 class="font-bold text-white text-sm">6 Monate Begleitung & Pre-Insights</h3>
+                        <p class="text-[10px] text-slate-400 leading-tight mt-0.5">Trends vor der Masse. Regelmäßige Check-ins für mentale Stabilität.</p>
                     </div>
                 </div>
 
                 <!-- Optional Events -->
-                <div class="flex gap-4 items-start opacity-75">
-                    <div class="bg-slate-800/30 p-2 rounded-lg border border-slate-700/30 shrink-0">
-                        <i data-lucide="glass-water" class="w-5 h-5 text-slate-500"></i>
+                <div class="flex gap-3 items-start opacity-75">
+                    <div class="bg-slate-800/30 p-1.5 rounded-lg border border-slate-700/30 shrink-0">
+                        <i data-lucide="glass-water" class="w-4 h-4 text-slate-500"></i>
                     </div>
                     <div>
                         <h3 class="font-bold text-slate-300 text-sm">Private Events (Optional)</h3>
-                        <p class="text-xs text-slate-500 mt-1">Dinners & Netzwerk auf Augenhöhe.</p>
+                        <p class="text-[10px] text-slate-500 leading-tight mt-0.5">Dinners & Netzwerk auf Augenhöhe.</p>
                     </div>
                 </div>
 
             </div>
 
             <!-- PRICE & CTA -->
-            <div class="mt-auto border-t border-slate-800 pt-8">
-                <div class="flex justify-between items-end mb-6">
+            <div class="mt-auto border-t border-slate-800 pt-6 pb-2">
+                <div class="flex justify-between items-end mb-4">
                     <div>
-                        <p class="text-xs text-slate-500 uppercase tracking-widest mb-1">Einmaliges Investment</p>
-                        <div class="text-4xl md:text-5xl font-black text-white leading-none">15.000 €</div>
-                        <p class="text-[10px] text-slate-500 mt-1">zzgl. gesetzl. MwSt.</p>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest mb-0.5">Einmaliges Investment</p>
+                        <div class="text-3xl md:text-4xl font-black text-white leading-none">15.000 €</div>
+                        <p class="text-[9px] text-slate-500 mt-0.5">zzgl. gesetzl. MwSt.</p>
                     </div>
                     <div class="text-right hidden md:block">
-                        <div class="flex -space-x-2 justify-end mb-2">
-                            <!-- Fake Avatars for Social Proof -->
-                            <div class="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-700"></div>
-                            <div class="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-600"></div>
-                            <div class="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-500 flex items-center justify-center text-[9px] font-bold text-white">+2</div>
+                        <div class="flex -space-x-2 justify-end mb-1">
+                            <div class="w-6 h-6 rounded-full border-2 border-slate-900 bg-slate-700"></div>
+                            <div class="w-6 h-6 rounded-full border-2 border-slate-900 bg-slate-600"></div>
+                            <div class="w-6 h-6 rounded-full border-2 border-slate-900 bg-slate-500 flex items-center justify-center text-[8px] font-bold text-white">+2</div>
                         </div>
-                        <p class="text-[10px] text-slate-400">Nur noch 2 Plätze dieses Quartal</p>
+                        <p class="text-[9px] text-slate-400">Nur noch 2 Plätze dieses Quartal</p>
                     </div>
                 </div>
 
-                <a href="#" class="btn-platinum w-full py-5 rounded-xl text-center flex items-center justify-center gap-3 text-lg group pulse">
-                    Jetzt Platz anfragen <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
+                <a href="#" class="btn-platinum w-full py-4 rounded-xl text-center flex items-center justify-center gap-2 text-base group pulse">
+                    Jetzt Platz anfragen <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                 </a>
                 
-                <div class="mt-6 flex justify-between items-center text-[10px] text-slate-600">
+                <div class="mt-4 flex justify-between items-center text-[9px] text-slate-600">
                     <p>Sichere Zahlungsabwicklung</p>
                     <div class="flex gap-3">
                         <a href="#" class="hover:text-slate-400">Impressum</a>
