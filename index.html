@@ -3,116 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mastermind Platin - Florian Merzenich</title>
+    <title>Mastermind Platin - Exklusiver Zugang</title>
     
-    <!-- Fonts laden: Montserrat & Poppins -->
+    <!-- Fonts laden -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,400;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- Icons laden (FontAwesome & Lucide) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- Buttery Smooth Scrolling (Lenis) -->
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        platinum: {
-                            100: '#e2e8f0',
-                            200: '#cbd5e1',
-                            300: '#94a3b8',
-                            400: '#64748b',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
 
     <style>
-        /* -----------------------------------------------------------
-           BASIS SETUP & VARIABLEN (PLATIN THEME)
-        ----------------------------------------------------------- */
+        /* PLATINUM THEME VARIABLES */
         :root {
-            /* Platinum Palette statt Orange */
-            --primary-color: #cbd5e1; /* Platinum Bright */
-            --accent-color: #94a3b8;  /* Platinum Darker */
-            --highlight-blue: #38bdf8; /* Light Blue Accent */
+            --dark-bg: #020617;
+            --primary-color: #cbd5e1;
             
-            --dark-bg: #020617;       /* Deep Ocean Blue */
-            --card-bg: rgba(15, 23, 42, 0.6); /* Slate 900 mit Transparenz */
-            --text-white: #f8fafc;
-            --text-gray: #94a3b8;
-            
-            --overlay-color: rgba(2, 6, 23, 0.85); /* Deep Blue Overlay */
-            
-            /* Shimmer Gradient Colors */
+            /* Shimmer Colors */
             --shimmer-1: #e2e8f0;
             --shimmer-2: #a5f3fc;
             --shimmer-3: #f5d0fe;
             --shimmer-4: #94a3b8;
         }
 
-        /* --- LENIS SMOOTH SCROLLING CSS --- */
-        html.lenis { height: auto; }
-        .lenis.lenis-smooth { scroll-behavior: auto; }
-        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-        .lenis.lenis-stopped { overflow: hidden; }
-        .lenis.lenis-scrolling iframe { pointer-events: none; }
-
         body {
             background-color: var(--dark-bg);
-            color: var(--text-white);
+            color: #f8fafc;
             font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Hintergrund Effekt */
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #020617 100%);
         }
 
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
 
-        /* -----------------------------------------------------------
-           HINTERGRUND (Fixed & Gradient)
-        ----------------------------------------------------------- */
-        .bg-fixed {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -2;
-            /* Subtiler Noise/Gradient Background statt Bild */
-            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #020617 100%);
-        }
-
-        /* Akzent-Blobs im Hintergrund */
+        /* Background Blobs */
         .bg-blob-1 {
-            position: fixed; top: 10%; left: 10%; width: 500px; height: 500px;
-            background: #1d4ed8; filter: blur(150px); opacity: 0.15; z-index: -1; pointer-events: none;
+            position: fixed; top: -10%; left: -10%; width: 50%; height: 50%;
+            background: #1d4ed8; filter: blur(150px); opacity: 0.15; z-index: -1;
             animation: float 10s ease-in-out infinite;
         }
         .bg-blob-2 {
-            position: fixed; bottom: 10%; right: 10%; width: 600px; height: 600px;
-            background: #4f46e5; filter: blur(150px); opacity: 0.15; z-index: -1; pointer-events: none;
+            position: fixed; bottom: -10%; right: -10%; width: 50%; height: 50%;
+            background: #4f46e5; filter: blur(150px); opacity: 0.15; z-index: -1;
             animation: float 12s ease-in-out infinite reverse;
         }
-
         @keyframes float {
-            0% { transform: translate(0, 0); }
+            0%, 100% { transform: translate(0, 0); }
             50% { transform: translate(20px, 40px); }
-            100% { transform: translate(0, 0); }
         }
 
-        /* -----------------------------------------------------------
-           SPEZIAL EFFEKTE (PLATINUM)
-        ----------------------------------------------------------- */
+        /* Platinum Text Effect */
         .platinum-text {
             background: linear-gradient(90deg, var(--shimmer-1) 0%, var(--shimmer-4) 25%, var(--shimmer-2) 45%, #ffffff 50%, var(--shimmer-3) 55%, var(--shimmer-4) 75%, var(--shimmer-1) 100%);
             background-size: 200% auto;
@@ -120,612 +65,179 @@
             -webkit-background-clip: text;
             background-clip: text;
             animation: shine 4s linear infinite;
-            font-weight: 800;
         }
-
-        .platinum-border {
-            position: relative;
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid transparent;
-            border-radius: 1rem;
-            background-clip: padding-box;
-            backdrop-filter: blur(10px);
-        }
-
-        .platinum-border::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            z-index: -1;
-            margin: -1px;
-            border-radius: inherit;
-            background: linear-gradient(135deg, rgba(226,232,240,0.1), rgba(148,163,184,0.5), rgba(226,232,240,0.1));
-        }
-
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* -----------------------------------------------------------
-           BUTTONS
-        ----------------------------------------------------------- */
-        .btn-main {
+        /* Button Style */
+        .btn-platinum {
             background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
             color: #0f172a;
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
-            font-size: 16px;
-            padding: 16px 40px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-radius: 50px;
-            border: none;
             transition: all 0.3s ease;
             box-shadow: 0 0 20px rgba(226, 232, 240, 0.2);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            text-decoration: none;
         }
-
-        .btn-main:hover {
-            transform: translateY(-2px) scale(1.02);
+        .btn-platinum:hover {
+            transform: translateY(-2px);
             box-shadow: 0 0 30px rgba(226, 232, 240, 0.4);
-            color: #000;
         }
-
-        .pulse { animation: pulse-animation 2s infinite; }
-        @keyframes pulse-animation {
+        
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(226, 232, 240, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(226, 232, 240, 0); }
+            70% { box-shadow: 0 0 0 10px rgba(226, 232, 240, 0); }
             100% { box-shadow: 0 0 0 0 rgba(226, 232, 240, 0); }
         }
 
-        /* -----------------------------------------------------------
-           LAYOUT & SECTIONS
-        ----------------------------------------------------------- */
-        .container {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: clamp(24px, 4vw, 36px);
-            font-weight: 700;
-            margin-bottom: 50px;
-            color: var(--text-white);
-        }
-
-        /* GRID & CARDS */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-        @media (min-width: 768px) {
-            .grid-3 { grid-template-columns: repeat(3, 1fr); }
-            .grid-2 { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            padding: 30px;
-            border-radius: 16px;
-            text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(226, 232, 240, 0.3);
-        }
-
-        .card p { color: var(--text-gray); font-size: 15px; }
-        .card i, .card svg { 
-            color: var(--primary-color); 
-            margin-bottom: 20px; 
-            width: 32px; height: 32px;
-        }
-
-        /* -----------------------------------------------------------
-           STRATEGY BOX / STACK
-        ----------------------------------------------------------- */
-        .strategy-box {
-            background: rgba(2, 6, 23, 0.5);
-            border: 1px solid rgba(148, 163, 184, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 0 50px rgba(0,0,0,0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .strategy-list { list-style: none; padding: 0; margin: 30px 0; }
-        .strategy-list li {
-            display: flex; align-items: flex-start; margin-bottom: 20px;
-            font-size: 16px; color: var(--text-white);
-        }
-        .strategy-list i, .strategy-list svg {
-            color: #38bdf8; /* Cyan Checkmark */
-            margin-right: 15px; margin-top: 4px; width: 20px;
-        }
-
-        .price-value {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(40px, 5vw, 60px);
-            font-weight: 800;
-            color: var(--primary-color);
-            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* -----------------------------------------------------------
-           PROFILE SECTION
-        ----------------------------------------------------------- */
-        .profile-container {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 40px; text-align: center;
-        }
-        @media (min-width: 768px) {
-            .profile-container { flex-direction: row; text-align: left; align-items: flex-start; }
-        }
-        .profile-img {
-            width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
-            border: 2px solid var(--primary-color);
-            box-shadow: 0 0 30px rgba(226, 232, 240, 0.2);
-            flex-shrink: 0; /* Verhindert das Stauchen zu einem Oval */
-        }
-
-        /* -----------------------------------------------------------
-           MODAL & BADGE
-        ----------------------------------------------------------- */
-        .proven-expert-badge {
-            position: fixed; bottom: 20px; right: 20px;
-            background: #ffffff; color: #0f172a;
-            width: 110px; padding: 10px; border-radius: 4px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            z-index: 9999; text-align: center; font-family: 'Poppins', sans-serif;
-            border-top: 3px solid #64748b;
-        }
-        .pe-rating { font-weight: 800; font-size: 20px; }
-        .pe-stars { color: #f59e0b; font-size: 12px; }
-
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.9); z-index: 2000;
-            justify-content: center; align-items: center; backdrop-filter: blur(5px);
-        }
-        .modal-overlay.active { display: flex; }
-        .modal-content {
-            background: #0f172a; border: 1px solid var(--primary-color);
-            padding: 40px; border-radius: 15px; max-width: 600px; width: 90%;
-            max-height: 85vh; overflow-y: auto; color: var(--text-gray);
-        }
-        .close-modal {
-            position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer;
-        }
-
+        /* Scrollbar für die Liste */
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
     </style>
 </head>
-<body>
+<body class="p-4 md:p-8">
 
-    <!-- HINTERGRUND -->
-    <div class="bg-fixed"></div>
     <div class="bg-blob-1"></div>
     <div class="bg-blob-2"></div>
 
-    <!-- PROVEN EXPERT WIDGET -->
-    <div class="proven-expert-badge">
-        <div class="text-xs font-bold text-slate-800 mb-1">Proven<span class="text-slate-500">Expert</span></div>
-        <div class="pe-rating">5.00</div>
-        <div class="pe-stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-        </div>
-        <div class="text-[9px] text-slate-500 mt-1 uppercase">Sehr Gut</div>
-        <div class="text-[9px] text-slate-400 mt-1 pt-1 border-t border-slate-200" id="pe-date-display">Stand: ...</div>
-    </div>
-
-    <!-- IMPRESSUM / DATENSCHUTZ MODALS (Hidden) -->
-    <div id="impressum-modal" class="modal-overlay">
-        <div class="modal-content relative">
-            <span class="close-modal" data-target="impressum-modal">&times;</span>
-            <h3 class="text-2xl font-bold text-white mb-4">Impressum</h3>
-            <p><strong>Florian Merzenich</strong><br>Am Eichelgärtchen 36B<br>56283 Halsenbach</p>
-            <p class="mt-4">Telefon: 015253846630<br>E-Mail: managment@florian-merzenich.de</p>
-        </div>
-    </div>
-
-    <div id="datenschutz-modal" class="modal-overlay">
-        <div class="modal-content relative">
-            <span class="close-modal" data-target="datenschutz-modal">&times;</span>
-            <h3 class="text-2xl font-bold text-white mb-4">Datenschutz</h3>
-            <p>Hier steht der vollständige Datenschutzerklärungstext wie in der Vorlage...</p>
-        </div>
-    </div>
-
-    <main class="container">
+    <!-- MAIN CONTAINER CARD -->
+    <main class="w-full max-w-7xl bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl overflow-hidden shadow-2xl grid lg:grid-cols-2 relative">
         
-        <!-- HERO SECTION -->
-        <header class="flex flex-col items-center text-center pt-10 pb-20">
-            <!-- Top Label -->
-            <div class="inline-block border border-slate-600 rounded-full px-4 py-1 mb-6 bg-slate-900/50 backdrop-blur">
-                <span class="text-xs font-bold tracking-widest uppercase text-slate-300">Für High Performer & Unternehmer</span>
-            </div>
-
-            <!-- Headline kleiner gemacht -->
-            <h1 class="text-2xl md:text-4xl lg:text-5xl font-black mb-8 leading-tight text-white max-w-5xl">
-                VOM <span class="font-serif italic font-normal text-slate-400">KLASSISCHEN INVESTIEREN</span> ZUR<br>
-                <span class="platinum-text">STRATEGISCHEN VERMÖGENS-ARCHITEKTUR</span>
-            </h1>
-
-            <!-- VIDEO CONTAINER kleiner (max-w-2xl statt max-w-4xl) -->
-            <div class="platinum-border p-1 w-full max-w-2xl mb-10 shadow-2xl relative group cursor-pointer">
-                <div class="aspect-video bg-slate-900 rounded-xl overflow-hidden relative">
-                    <!-- Thumbnail BG -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center">
-                        <div class="w-20 h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 transition-transform group-hover:scale-110">
-                            <div class="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-1"></div>
-                        </div>
-                    </div>
-                    <div class="absolute bottom-6 left-6 text-left">
-                        <p class="text-xs font-bold text-blue-300 tracking-widest uppercase mb-1">Mastermind Platin</p>
-                        <p class="text-white font-bold text-lg">Warum traditionelle Diversifikation heute scheitert</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA -->
-            <div class="flex flex-col items-center gap-4">
-                <a href="#offer" class="btn-main pulse">
-                    Jetzt Bewerbung starten <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                </a>
-                <p class="text-sm text-slate-400">Nur auf Anfrage • 15.000 € Invest</p>
-                
-                <!-- Countdown -->
-                <div class="mt-4 text-center">
-                    <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Bewerbungsphase endet in:</p>
-                    <div class="flex gap-2 justify-center text-platinum-200">
-                        <div class="bg-slate-800/80 border border-slate-700 rounded p-2 min-w-[60px]">
-                            <div id="d" class="text-2xl font-bold font-heading text-white">00</div>
-                            <div class="text-[10px] uppercase">Tage</div>
-                        </div>
-                        <div class="bg-slate-800/80 border border-slate-700 rounded p-2 min-w-[60px]">
-                            <div id="h" class="text-2xl font-bold font-heading text-white">00</div>
-                            <div class="text-[10px] uppercase">Std</div>
-                        </div>
-                        <div class="bg-slate-800/80 border border-slate-700 rounded p-2 min-w-[60px]">
-                            <div id="m" class="text-2xl font-bold font-heading text-white">15</div>
-                            <div class="text-[10px] uppercase">Min</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </header>
-
-        <!-- PROBLEM SECTION (Using Grid Cards) -->
-        <section>
-            <h3 class="section-title">Das Dilemma moderner Vermögen</h3>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="card">
-                    <i data-lucide="clock" class="mx-auto text-blue-400"></i>
-                    <h4 class="text-xl font-bold text-white mb-2">Die Zeitfalle</h4>
-                    <p>Du bist Experte in deinem Geschäft. Du hast keine 10 Stunden am Tag, um Discord-Server zu durchsuchen. Du kaufst Nachrichten, wenn sie bereits eingepreist sind.</p>
-                </div>
-                <div class="card">
-                    <i data-lucide="users" class="mx-auto text-blue-400"></i>
-                    <h4 class="text-xl font-bold text-white mb-2">Die "Berater"-Illusion</h4>
-                    <p>Deine Hausbank versteht Krypto nicht. Dein Umfeld zockt nur. Dir fehlt ein strategischer Partner auf Augenhöhe, der Risikomanagement beherrscht.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEW: THE STORY / PHILOSOPHY SECTION -->
-        <section class="relative overflow-hidden">
-            <!-- Background accent -->
-            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
-
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-12">
-                    <span class="text-xs font-bold text-blue-400 tracking-widest uppercase mb-2 block">Die Philosophie hinter Platin</span>
-                    <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">
-                        Du kaufst keine "Coins".<br>
-                        <span class="text-slate-400">Du kaufst dir deine mentale Freiheit zurück.</span>
-                    </h3>
-                </div>
-
-                <div class="prose prose-invert prose-lg mx-auto text-slate-300 leading-relaxed space-y-6">
-                    <p>
-                        In den letzten Jahren habe ich mit hunderten Investoren gesprochen. Viele von ihnen waren vermögend. Unternehmer, Ärzte, leitende Angestellte. Auf dem Papier waren sie erfolgreich. 
-                        Aber wenn es um Krypto ging, verhielten sie sich wie Anfänger im Casino.
-                    </p>
-                    <div class="border-l-4 border-blue-500 pl-6 py-2 my-8 bg-slate-900/50 italic text-white rounded-r-lg">
-                        "Ich habe 200.000 € investiert, aber ich schlafe schlecht, weil ich nicht weiß, wann ich aussteigen muss."
-                    </div>
-                    <p>
-                        Das ist der wunde Punkt. <strong class="text-white">Kapital ohne Strategie ist nur ein teures Hobby.</strong>
-                        Das Mastermind Platin Paket ist nicht einfach ein weiteres "Produkt". Es ist die Antwort auf die Frage: 
-                        <em>"Wie würde ich investieren, wenn ich einen Insider direkt neben mir sitzen hätte?"</em>
-                    </p>
-                    <p>
-                        Wir ersetzen Hoffnung durch <strong>Daten</strong>. Wir ersetzen FOMO durch <strong>Zyklen-Analyse</strong>. 
-                        Und das Wichtigste: Ich fungiere als dein Filter. Ich trenne für dich das Signal vom Lärm. 
-                        Damit du dich wieder auf das konzentrieren kannst, was du am besten kannst: Dein Unternehmen führen und dein Leben genießen.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEW: SERIOUS SOCIAL PROOF -->
-        <section>
-            <h3 class="section-title">Stimmen aus dem Netzwerk</h3>
-            <div class="grid md:grid-cols-3 gap-6">
-                
-                <!-- Review 1: Der Analytiker -->
-                <div class="bg-slate-900/40 border border-slate-800 p-8 rounded-xl relative hover:border-slate-600 transition-colors">
-                    <div class="absolute -top-3 left-8 bg-slate-950 px-2 text-slate-500">
-                        <i class="fa-solid fa-quote-left text-2xl"></i>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-6 mt-2 italic">
-                        "Als Akademiker bin ich allergisch gegen 'Hype' und 'Moon-Versprechen'. Florian liefert genau das Gegenteil: Analytische Tiefe und ökonomische Logik. Seine Einordnung der Marktzyklen hat mein Portfolio vor einem 40% Drawdown bewahrt."
-                    </p>
-                    <div class="flex items-center gap-3 border-t border-slate-800 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold text-white border border-slate-600">DR</div>
-                        <div>
-                            <p class="text-white text-sm font-bold">Dr. Alexander B.</p>
-                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Wirtschaftspromovend</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 2: Der Profi -->
-                <div class="bg-slate-900/40 border border-slate-800 p-8 rounded-xl relative hover:border-slate-600 transition-colors">
-                    <div class="absolute -top-3 left-8 bg-slate-950 px-2 text-slate-500">
-                        <i class="fa-solid fa-quote-left text-2xl"></i>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-6 mt-2 italic">
-                        "Ich komme aus dem klassischen Bankwesen. Dort wird Krypto oft belächelt oder ignoriert. Florian baut Brücken. Er versteht Asset Protection so, wie wir es im Private Banking gelernt haben, nutzt aber die Asymmetrie von Krypto. Exzellent."
-                    </p>
-                    <div class="flex items-center gap-3 border-t border-slate-800 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold text-white border border-slate-600">CM</div>
-                        <div>
-                            <p class="text-white text-sm font-bold">Christian M.</p>
-                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Ex-Bankkaufmann / Investor</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 3: Die Unternehmerin -->
-                <div class="bg-slate-900/40 border border-slate-800 p-8 rounded-xl relative hover:border-slate-600 transition-colors">
-                    <div class="absolute -top-3 left-8 bg-slate-950 px-2 text-slate-500">
-                        <i class="fa-solid fa-quote-left text-2xl"></i>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-6 mt-2 italic">
-                        "Mein Tag hat 14 Stunden, ich leite ein Vertriebsteam. Ich habe keine Zeit für Youtube-Videos. Der direkte WhatsApp-Draht zu Florian ist für mich der größte Hebel. Eine Sprachnachricht, eine klare Einschätzung, Entscheidung getroffen. Das ist Effizienz."
-                    </p>
-                    <div class="flex items-center gap-3 border-t border-slate-800 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold text-white border border-slate-600">JK</div>
-                        <div>
-                            <p class="text-white text-sm font-bold">Julia K.</p>
-                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Vertriebsleiterin Tech</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- PROFILE SECTION (Content from New Website, Design from New Website) -->
-        <section>
-            <div class="profile-container bg-slate-900/30 p-8 rounded-2xl border border-slate-800/50">
-                <!-- Image Updated -->
-                <img src="profilbild.webp" alt="Florian Merzenich" class="profile-img">
-                
-                <div class="text-left">
-                    <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-1">Das ist</p>
-                    <h2 class="text-3xl font-bold text-white mb-6">Florian Merzenich</h2>
-                    
-                    <div class="space-y-4 text-slate-300 text-sm md:text-base">
-                        <p>Florian Merzenich ist Experte für Investitionen und Krypto. Er gilt als Marktführer in der „Crypto-Investor-Ausbildung“ und ist bereits seit 2013 aktiv.</p>
-                        <p>Mit über <strong>120.000 € Investition</strong> in seine eigene Persönlichkeitsentwicklung hilft er heute Unternehmern, ihr Vermögen strategisch und ohne Spekulation zu steuern.</p>
-                        <p class="italic text-blue-300 border-l-2 border-blue-500 pl-4">„System statt Finanzprodukt“ – für absolute Unabhängigkeit von Banken, Trends und Hypes.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- THE OFFER STACK (Using Strategy Box Style) -->
-        <section id="offer">
-            <h3 class="section-title">Mastermind <span class="platinum-text">PLATIN</span> Stack</h3>
+        <!-- LEFT: PRODUCT IMAGE -->
+        <div class="relative h-64 lg:h-auto bg-slate-950 overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60 z-10 lg:opacity-30"></div>
+            <!-- Das Bild füllt den linken Bereich komplett aus -->
+            <img src="mastermind.webp" alt="Mastermind Platin Paket" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
             
-            <div class="strategy-box">
-                <!-- Image added here -->
-                <img src="mastermind.webp" alt="Mastermind Platin Masterplan" class="w-full h-auto rounded-xl mb-8 border border-slate-700 shadow-lg">
+            <!-- Mobile Title Overlay (nur sichtbar auf Mobile, wenn Bild oben ist) -->
+            <div class="absolute bottom-4 left-4 z-20 lg:hidden">
+                <span class="text-xs font-bold text-blue-400 uppercase tracking-widest bg-slate-900/80 px-2 py-1 rounded">Exklusiv</span>
+            </div>
+        </div>
 
-                <h4 class="text-xl font-bold text-white mb-6 border-b border-slate-700 pb-4">Was dieses Exklusiv-Paket beinhaltet:</h4>
+        <!-- RIGHT: VALUE STACK & CHECKOUT -->
+        <div class="p-6 md:p-10 lg:p-14 flex flex-col justify-center max-h-[90vh] lg:max-h-screen overflow-y-auto custom-scroll">
+            
+            <div class="mb-2 hidden lg:block">
+                <span class="text-xs font-bold text-blue-400 uppercase tracking-widest border border-blue-900/50 bg-blue-900/10 px-3 py-1 rounded-full">Paket 3 • Exklusiv</span>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-black text-white mb-2">Mastermind <span class="platinum-text">PLATIN</span></h1>
+            <p class="text-slate-400 text-sm mb-8 font-medium">Zielgruppe: High Performer, Unternehmer & HNWIs</p>
+
+            <!-- THE STACK -->
+            <div class="space-y-5 mb-10">
                 
-                <ul class="strategy-list space-y-4">
-                    <li class="flex items-start">
-                        <i data-lucide="check-circle" class="mr-4 text-blue-400 flex-shrink-0 mt-1"></i>
-                        <div>
-                            <strong class="block text-white">Private Strategie-Session (1:1)</strong>
-                            <span class="text-sm text-slate-400">2 Stunden Deep Dive Analyse & Vermögensstrukturierung.</span>
-                        </div>
-                    </li>
-                    <li class="flex items-start">
-                        <i data-lucide="check-circle" class="mr-4 text-blue-400 flex-shrink-0 mt-1"></i>
-                        <div>
-                            <strong class="block text-white">Maßgeschneiderte High-Level Strategie</strong>
-                            <span class="text-sm text-slate-400">Bitcoin als Speicher, Altcoins als Hebel, Narrative als Kompass.</span>
-                        </div>
-                    </li>
-                    <li class="flex items-start bg-blue-900/20 p-2 rounded border border-blue-500/30">
-                        <i data-lucide="message-circle" class="mr-4 text-blue-300 flex-shrink-0 mt-1"></i>
-                        <div>
-                            <strong class="block text-blue-200">Direkter Draht zu mir (Priority)</strong>
-                            <span class="text-sm text-slate-400">WhatsApp/Telegram Zugang. Sprachnachrichten. Schnelle Markteinschätzung.</span>
-                        </div>
-                    </li>
-                    <li class="flex items-start">
-                        <i data-lucide="check-circle" class="mr-4 text-blue-400 flex-shrink-0 mt-1"></i>
-                        <div>
-                            <strong class="block text-white">Private Mastermind Calls</strong>
-                            <span class="text-sm text-slate-400">Kleine Gruppe. Unternehmer-Mindset. Kein Anfänger-Gerede.</span>
-                        </div>
-                    </li>
-                    <li class="flex items-start">
-                        <i data-lucide="check-circle" class="mr-4 text-blue-400 flex-shrink-0 mt-1"></i>
-                        <div>
-                            <strong class="block text-white">Pre-Insights & Alpha</strong>
-                            <span class="text-sm text-slate-400">Trends vor der Masse erkennen. Einordnung: Chance oder Müll?</span>
-                        </div>
-                    </li>
-                    <li class="flex items-start">
-                        <i data-lucide="check-circle" class="mr-4 text-blue-400 flex-shrink-0 mt-1"></i>
-                        <div>
-                            <strong class="block text-white">6 Monate Persönliche Begleitung</strong>
-                            <span class="text-sm text-slate-400">Mentale Stabilität und Exekution, wenn der Markt verrückt spielt.</span>
-                        </div>
-                    </li>
-                </ul>
+                <!-- Item 1 -->
+                <div class="flex gap-4 items-start">
+                    <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700/50 shrink-0">
+                        <i data-lucide="crosshair" class="w-5 h-5 text-platinum-300"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-base">Private Strategie-Session (1:1)</h3>
+                        <p class="text-xs text-slate-400 mt-1">2h Deep Dive: Vermögensanalyse & Freiheits-Masterplan.</p>
+                    </div>
+                </div>
 
-                <div class="text-center mt-12 pt-8 border-t border-slate-700">
-                    <p class="text-sm text-slate-500 uppercase tracking-widest mb-2">Dein Investment</p>
-                    <p class="price-value">15.000 €</p>
-                    <p class="text-xs text-slate-500 mt-2 mb-8">zzgl. MwSt. • Einmalzahlung</p>
-                    
-                    <a href="#" class="btn-main pulse w-full md:w-auto">
-                        Jetzt Platz anfragen
-                    </a>
+                <!-- Item 2 -->
+                <div class="flex gap-4 items-start">
+                    <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700/50 shrink-0">
+                        <i data-lucide="trending-up" class="w-5 h-5 text-platinum-300"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-base">Maßgeschneiderte High-Level-Strategie</h3>
+                        <p class="text-xs text-slate-400 mt-1">Bitcoin als Speicher, Altcoins als Hebel, Profi-Risikosteuerung.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 (Highlight) -->
+                <div class="flex gap-4 items-start bg-blue-900/10 p-3 -mx-3 rounded-xl border border-blue-500/20">
+                    <div class="bg-blue-500/20 p-2 rounded-lg border border-blue-500/30 shrink-0">
+                        <i data-lucide="message-circle" class="w-5 h-5 text-blue-300"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-blue-100 text-base flex items-center gap-2">
+                            Direkter Draht zu mir
+                            <span class="text-[9px] bg-blue-600 text-white px-1.5 py-0.5 rounded uppercase tracking-wider">Priority</span>
+                        </h3>
+                        <p class="text-xs text-blue-200/70 mt-1">Persönlicher Chat & Sprachnachrichten. Nähe & Vertrauen.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="flex gap-4 items-start">
+                    <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700/50 shrink-0">
+                        <i data-lucide="users" class="w-5 h-5 text-platinum-300"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-base">Private Mastermind Calls</h3>
+                        <p class="text-xs text-slate-400 mt-1">Unternehmer-Mindset. Kapital & Psychologie. Kein Anfänger-Talk.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5 & 6 Compacted -->
+                <div class="flex gap-4 items-start">
+                    <div class="bg-slate-800/50 p-2 rounded-lg border border-slate-700/50 shrink-0">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-platinum-300"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-base">6 Monate Begleitung & Pre-Insights</h3>
+                        <p class="text-xs text-slate-400 mt-1">Trends vor der Masse. Regelmäßige Check-ins für mentale Stabilität.</p>
+                    </div>
+                </div>
+
+                <!-- Optional Events -->
+                <div class="flex gap-4 items-start opacity-75">
+                    <div class="bg-slate-800/30 p-2 rounded-lg border border-slate-700/30 shrink-0">
+                        <i data-lucide="glass-water" class="w-5 h-5 text-slate-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-300 text-sm">Private Events (Optional)</h3>
+                        <p class="text-xs text-slate-500 mt-1">Dinners & Netzwerk auf Augenhöhe.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- PRICE & CTA -->
+            <div class="mt-auto border-t border-slate-800 pt-8">
+                <div class="flex justify-between items-end mb-6">
+                    <div>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mb-1">Einmaliges Investment</p>
+                        <div class="text-4xl md:text-5xl font-black text-white leading-none">15.000 €</div>
+                        <p class="text-[10px] text-slate-500 mt-1">zzgl. gesetzl. MwSt.</p>
+                    </div>
+                    <div class="text-right hidden md:block">
+                        <div class="flex -space-x-2 justify-end mb-2">
+                            <!-- Fake Avatars for Social Proof -->
+                            <div class="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-700"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-600"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-500 flex items-center justify-center text-[9px] font-bold text-white">+2</div>
+                        </div>
+                        <p class="text-[10px] text-slate-400">Nur noch 2 Plätze dieses Quartal</p>
+                    </div>
+                </div>
+
+                <a href="#" class="btn-platinum w-full py-5 rounded-xl text-center flex items-center justify-center gap-3 text-lg group pulse">
+                    Jetzt Platz anfragen <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                
+                <div class="mt-6 flex justify-between items-center text-[10px] text-slate-600">
+                    <p>Sichere Zahlungsabwicklung</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="hover:text-slate-400">Impressum</a>
+                        <a href="#" class="hover:text-slate-400">AGB</a>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- SCARCITY SECTION (From New Website) -->
-        <section class="py-12 bg-red-900/10 border-y border-red-900/30 text-center">
-            <div class="container max-w-3xl mx-auto">
-                <div class="inline-block bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 shadow-[0_0_15px_rgba(220,38,38,0.5)] animate-pulse">ACHTUNG</div>
-                <h3 class="text-2xl font-bold text-white mb-4">Bitte lies das, bevor du klickst:</h3>
-                <p class="text-slate-300 leading-relaxed">
-                    Ich arbeite persönlich mit meinen Klienten. Mein Tag hat auch nur 24 Stunden.<br><br>
-                    <strong class="text-white">Bitte bewirb dich nur, wenn du über entsprechendes Investitionskapital verfügst und bereit bist, Verantwortung für deinen Reichtum zu übernehmen.</strong>
-                </p>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="text-center py-12 text-slate-500 text-sm">
-            <div class="flex justify-center gap-6 mb-6 text-xl">
-                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-youtube"></i></a>
-            </div>
-            <p>
-                <a href="#" id="impressum-link" class="hover:text-white">Impressum</a> | 
-                <a href="#" id="datenschutz-link" class="hover:text-white">Datenschutz</a>
-            </p>
-            <p class="mt-4 text-xs opacity-50">&copy; 2025 Florian Merzenich. All rights reserved.</p>
-        </footer>
-
+        </div>
     </main>
 
     <script>
-        // Init Lucide Icons
         lucide.createIcons();
-
-        // 1. LENIS SMOOTH SCROLLING
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
-        });
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        // 2. SMART COUNTDOWN TIMER (Monatsmitte / Monatsende)
-        (function() {
-            const displayDays = document.getElementById('d');
-            const displayHours = document.getElementById('h');
-            const displayMinutes = document.getElementById('m');
-
-            function updateTimer() {
-                const now = new Date();
-                const currentYear = now.getFullYear();
-                const currentMonth = now.getMonth();
-
-                // Deadline 1: 15. des Monats
-                let targetDate = new Date(currentYear, currentMonth, 15, 23, 59, 59);
-
-                // Wenn der 15. vorbei ist, ist die nächste Deadline der letzte Tag des Monats
-                if (now > targetDate) {
-                    targetDate = new Date(currentYear, currentMonth + 1, 0, 23, 59, 59);
-                }
-
-                const diff = targetDate - now;
-
-                if (diff <= 0) {
-                    // Fallback: Wenn wir genau auf der Sekunde sind oder drüber, kurz warten oder nächstes Ziel
-                    // (Sollte durch obige Logik abgefangen sein, aber sicherheitshalber)
-                    return; 
-                }
-
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-                if (displayDays) displayDays.textContent = d < 10 ? "0" + d : d;
-                if (displayHours) displayHours.textContent = h < 10 ? "0" + h : h;
-                if (displayMinutes) displayMinutes.textContent = m < 10 ? "0" + m : m;
-            }
-
-            setInterval(updateTimer, 1000);
-            updateTimer(); // Initial call
-        })();
-
-        // 3. DATE FOR PROVEN EXPERT
-        const dateElement = document.getElementById('pe-date-display');
-        if (dateElement) {
-            const today = new Date();
-            dateElement.textContent = `Stand: ${today.toLocaleDateString('de-DE')}`;
-        }
-
-        // 4. MODALS
-        const triggers = document.querySelectorAll('#impressum-link, #datenschutz-link');
-        const closeButtons = document.querySelectorAll('.close-modal');
-        const modals = document.querySelectorAll('.modal-overlay');
-
-        triggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                let targetId = trigger.id === 'impressum-link' ? 'impressum-modal' : 'datenschutz-modal';
-                document.getElementById(targetId).classList.add('active');
-            });
-        });
-
-        closeButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetId = btn.getAttribute('data-target');
-                document.getElementById(targetId).classList.remove('active');
-            });
-        });
-
-        modals.forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) modal.classList.remove('active');
-            });
-        });
     </script>
 </body>
 </html>
